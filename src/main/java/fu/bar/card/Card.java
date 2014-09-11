@@ -81,4 +81,14 @@ public class Card
         result = 31 * result + cost;
         return result;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Card{" +
+                "name='" + name + '\'' +
+                ", text='" + text + '\'' +
+                ", cost=" + cost +
+                '}';
+    }
 }
