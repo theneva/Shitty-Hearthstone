@@ -2,6 +2,8 @@ package fu.bar.card;
 
 import fu.bar.Configurator;
 
+import java.util.Random;
+
 public class Hand extends CardContainer
 {
     public Hand()
@@ -15,6 +17,7 @@ public class Hand extends CardContainer
 
     public Card discardRandomCard() {
 
-        return null;
+        Random random = new Random();
+        return cards.remove(random.nextInt(cards.size()));
     }
 }

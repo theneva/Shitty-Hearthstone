@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.Stack;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class CardContainerTest
 {
@@ -89,5 +91,15 @@ public class CardContainerTest
 
         assertEquals("getSpells on a deck with two minions and 1 spell should return a stack of 1 spell.", 1, actualSpells.size());
         assertEquals("The spells should be the arcane missiles.", expectedSpells, actualSpells);
+    }
+
+    @Test
+    public void testContains() {
+        final CardContainer cardContainer = new Hand();
+        final Card card = getArcaneMissiles();
+        cardContainer.addCard(card);
+
+        assertTrue("The card container should contain the added card.", cardContainer.contains(card));
+        assertFalse("The card container should not contain a non-added card.", cardContainer.contains(getRagnaros()));
     }
 }

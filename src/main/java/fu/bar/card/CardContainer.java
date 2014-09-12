@@ -67,4 +67,8 @@ public abstract class CardContainer
     {
         return cards.size() == cardLimit;
     }
+
+    public boolean contains(final Card card) {
+        return cards.contains(card);
+    }
 }
