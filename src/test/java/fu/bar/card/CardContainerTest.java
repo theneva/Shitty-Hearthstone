@@ -4,14 +4,14 @@ import org.junit.Test;
 
 import java.util.Stack;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static fu.bar.util.CardProvider.*;
+import static org.junit.Assert.*;
 
 public class CardContainerTest
 {
     @Test
-    public void testNewCardContainerIsEmpty() {
+    public void testNewCardContainerIsEmpty()
+    {
         final CardContainer container = new Deck();
         assertEquals("The container should be empty on creation.", 0, container.size());
     }
@@ -50,18 +50,10 @@ public class CardContainerTest
         return container;
     }
 
-    private Minion getAuctioneer()
-    {
-        return new Minion("Gadgetzan Auctioneer", "Whenever you cast a spell, draw a card.", 5, 4, 4, MinionType.NONE);
-    }
-
-    private Minion getRagnaros()
-    {
-        return new Minion("Ragnaros the Firelord", "Can't Attack. At the end of your turn, deal 8 damage to a random enemy.", 8, 8, 8, MinionType.NONE);
-    }
 
     @Test
-    public void testGetMinionsReturnsOnlyMinions() {
+    public void testGetMinionsReturnsOnlyMinions()
+    {
         final CardContainer container = getCardContainerWithTwoMinions();
         container.addCard(getArcaneMissiles());
 
@@ -75,12 +67,9 @@ public class CardContainerTest
         assertEquals("The minions should be the auctioneer and Ragnaros, in that order.", expectedMinions, actualMinions);
     }
 
-    private Spell getArcaneMissiles() {
-        return new Spell("Arcane Missiles", "Deal 3 damage randomly split among enemy characters.", 1);
-    }
-
     @Test
-    public void testGetSpellsReturnsOnlySpells() {
+    public void testGetSpellsReturnsOnlySpells()
+    {
         final CardContainer container = getCardContainerWithTwoMinions();
         container.addCard(getArcaneMissiles());
 
@@ -94,7 +83,8 @@ public class CardContainerTest
     }
 
     @Test
-    public void testContains() {
+    public void testContains()
+    {
         final CardContainer cardContainer = new Hand();
         final Card card = getArcaneMissiles();
         cardContainer.addCard(card);

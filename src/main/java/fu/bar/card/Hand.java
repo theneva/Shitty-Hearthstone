@@ -24,7 +24,6 @@ public class Hand extends CardContainer
     }
 
     public Card discardRandomCard() {
-
         Random random = new Random();
         return cards.remove(random.nextInt(cards.size()));
     }

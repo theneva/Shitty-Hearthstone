@@ -2,5 +2,5 @@ package fu.bar.card;
 
 public enum MinionType
 {
-    NONE, BEAST, TOTEM, MURLOC
+    NONE, BEAST, TOTEM, MURLOC, DRAGON
 }
