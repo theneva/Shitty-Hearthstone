@@ -8,4 +8,13 @@ public class Deck extends CardContainer
     {
         super(Configurator.getInstance().getIntProperty("deckLimit"));
     }
+
+    public Card drawCard() throws EmptyDeckException
+    {
+        if (cards.isEmpty()) {
+            throw new EmptyDeckException();
+        }
+
+        return cards.pop();
+    }
 }
