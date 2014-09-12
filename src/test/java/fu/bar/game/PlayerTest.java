@@ -9,11 +9,9 @@ import static fu.bar.util.CardProvider.getArcaneMissiles;
 import static fu.bar.util.CardProvider.getRagnaros;
 import static org.junit.Assert.assertEquals;
 
-public class PlayerTest
-{
+public class PlayerTest {
     @Test
-    public void testDrawCard()
-    {
+    public void testDrawCard() {
         final Deck deck = new Deck();
         deck.addCard(getRagnaros());
         deck.addCard(getArcaneMissiles());
