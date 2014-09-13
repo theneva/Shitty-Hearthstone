@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
+import fu.bar.Configurator;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class CardRepository
     public CardRepository() throws Exception
     {
         final HttpResponse<JsonNode> response = Unirest.get("https://irythia-hs.p.mashape.com/cards")
-                .header("X-Mashape-Key", "wKWpmL6JcymshAxYRhq8dV8b7U9Cp1Ph4IGjsnPcwbeLuyCz6t")
+                .header("X-Mashape-Key", Configurator.getInstance().getProperty("apiKey"))
                 .asJson();
 
         final String cardsAsJson = response.getBody().toString();
@@ -27,7 +28,7 @@ public class CardRepository
         System.out.println(jsonCardArrayToCards(jsonElements));
     }
 
-    final List<Card> jsonCardArrayToCards(final JsonArray cardArray) {
+    private List<Card> jsonCardArrayToCards(final JsonArray cardArray) {
 
         final List<Card> cards = new ArrayList<>();
 
