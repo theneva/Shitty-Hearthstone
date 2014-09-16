@@ -83,16 +83,4 @@ public class Minion extends Card
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
-
-    public void attackOtherMinion(final Minion defendingMinion)
-    {
-        defendingMinion.reduceHealth(attack);
-        reduceHealth(attack);
-    }
-
-    private int reduceHealth(final int attackValue)
-    {
-        health -= attackValue;
-        return health;
-    }
 }
