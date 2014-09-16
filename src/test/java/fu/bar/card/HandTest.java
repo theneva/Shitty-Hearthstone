@@ -1,41 +1,48 @@
 package fu.bar.card;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
+import static fu.bar.util.CardHelper.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 public class HandTest
 {
+    private Hand hand;
+
+    @Before
+    public void setUp() {
+        hand = new Hand();
+
+        hand.addCard(getRagnaros());
+        hand.addCard(getArcaneMissiles());
+        hand.addCard(getAuctioneer());
+        hand.addCard(getArcaniteReaper());
+    }
+
     @Test
     public void testDiscardRandomCard() throws Exception
     {
-        final Hand hand = initializeHand();
-
-        final Card discardedCard = hand.discardRandomCard();
+        final Card discardedCard = hand.discardRandom();
         assertFalse("The hand should not contain the discarded card.", hand.contains(discardedCard));
-
         assertEquals("Discarding a random card should decrease hand size by 1.", 3, hand.size());
-    }
-
-    private Hand initializeHand() {
-        final Hand hand = new Hand();
-
-        hand.addCard(new Card("whatever", "whatever", 1));
-        hand.addCard(new Card("whatever1", "whatever1", 1));
-        hand.addCard(new Card("whatever2", "whatever2", 1));
-        hand.addCard(new Card("whatever3", "whatever3", 1));
-        return hand;
     }
 
     @Test
     public void testDiscardAll() {
-        final Hand hand = initializeHand();
+        final List<Card> actualCards = new ArrayList<>();
 
-        Stack<Card> discardedCards = hand.discardAll();
+        for (final Card card : hand.getCards())
+        {
+            actualCards.add(card);
+        }
+
+        final List<Card> discardedCards = hand.discardAll();
         assertEquals("The hand size should be zero.", hand.size(), 0);
-        assertEquals("The discard hand stack size should be equal to the initalizer's default size.", discardedCards.size(), initializeHand().size());
+        assertEquals("The discard hand stack size should be equal to the hand's default size.", discardedCards.size(), actualCards.size());
     }
 }

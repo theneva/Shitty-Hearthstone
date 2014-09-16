@@ -1,5 +1,7 @@
 package fu.bar.card;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public abstract class CardContainer
@@ -13,9 +15,20 @@ public abstract class CardContainer
         this.cardLimit = cardLimit;
     }
 
-    public Stack<Minion> getMinions()
+    public List<Card> getCards() {
+        final List<Card> cards = new ArrayList<>();
+
+        for (final Card card : this.cards)
+        {
+            cards.add(card);
+        }
+
+        return cards;
+    }
+
+    public List<Minion> getMinions()
     {
-        final Stack<Minion> minions = new Stack<>();
+        final List<Minion> minions = new ArrayList<>();
 
         for (final Card card : cards)
         {
@@ -28,9 +41,9 @@ public abstract class CardContainer
         return minions;
     }
 
-    public Stack<Spell> getSpells()
+    public List<Spell> getSpells()
     {
-        final Stack<Spell> spells = new Stack<>();
+        final List<Spell> spells = new ArrayList<>();
 
         for (final Card card : cards)
         {
@@ -43,7 +56,22 @@ public abstract class CardContainer
         return spells;
     }
 
-    public int size() {
+    public List<Weapon> getWeapons() {
+        final List<Weapon> weapons = new ArrayList<>();
+
+        for (final Card card : cards)
+        {
+            if (card instanceof Weapon)
+            {
+                weapons.add((Weapon) card);
+            }
+        }
+
+        return weapons;
+    }
+
+    public int size()
+    {
         return cards.size();
     }
 
@@ -63,12 +91,18 @@ public abstract class CardContainer
         return cards.pop();
     }
 
-    private boolean isFull()
+    public boolean isFull()
     {
         return cards.size() == cardLimit;
     }
 
-    public boolean contains(final Card card) {
+    public boolean contains(final Card card)
+    {
         return cards.contains(card);
+    }
+
+    public boolean isEmpty()
+    {
+        return size() == 0;
     }
 }

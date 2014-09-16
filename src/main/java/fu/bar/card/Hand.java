@@ -2,8 +2,9 @@ package fu.bar.card;
 
 import fu.bar.Configurator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import java.util.Stack;
 
 public class Hand extends CardContainer
 {
@@ -12,19 +13,21 @@ public class Hand extends CardContainer
         super(Configurator.getInstance().getIntProperty("handLimit"));
     }
 
-    public Stack<Card> discardAll() {
+    public List<Card> discardAll()
+    {
+        final List<Card> discardedCards = new ArrayList<>();
 
-        final Stack<Card> discardedCards = new Stack<>();
-
-        while (!cards.isEmpty()) {
+        while (!cards.isEmpty())
+        {
             discardedCards.add(cards.pop());
         }
 
         return discardedCards;
     }
 
-    public Card discardRandomCard() {
-        Random random = new Random();
+    public Card discardRandom()
+    {
+        final Random random = new Random();
         return cards.remove(random.nextInt(cards.size()));
     }
 }

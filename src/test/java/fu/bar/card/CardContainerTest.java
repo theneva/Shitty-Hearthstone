@@ -2,9 +2,10 @@ package fu.bar.card;
 
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Stack;
 
-import static fu.bar.util.CardProvider.*;
+import static fu.bar.util.CardHelper.*;
 import static org.junit.Assert.*;
 
 public class CardContainerTest
@@ -61,7 +62,7 @@ public class CardContainerTest
         expectedMinions.push(getRagnaros());
         expectedMinions.push(getAuctioneer());
 
-        final Stack<Minion> actualMinions = container.getMinions();
+        final List<Minion> actualMinions = container.getMinions();
 
         assertEquals("getMinions on a deck with 2 minions and 1 spell should return a stack of 2 minions.", 2, actualMinions.size());
         assertEquals("The minions should be the auctioneer and Ragnaros, in that order.", expectedMinions, actualMinions);
@@ -76,10 +77,26 @@ public class CardContainerTest
         final Stack<Spell> expectedSpells = new Stack<>();
         expectedSpells.push(getArcaneMissiles());
 
-        final Stack<Spell> actualSpells = container.getSpells();
+        final List<Spell> actualSpells = container.getSpells();
 
         assertEquals("getSpells on a deck with two minions and 1 spell should return a stack of 1 spell.", 1, actualSpells.size());
         assertEquals("The spells should be the arcane missiles.", expectedSpells, actualSpells);
+    }
+
+    @Test
+    public void testGetWeaponsReturnsOnlyWeapons()
+    {
+        final CardContainer container = getCardContainerWithTwoMinions();
+        container.addCard(getArcaneMissiles());
+        container.addCard(getArcaniteReaper());
+
+        final Stack<Weapon> expectedWeapons = new Stack<>();
+        expectedWeapons.push(getArcaniteReaper());
+
+        final List<Weapon> actualWeapons = container.getWeapons();
+
+        assertEquals("getSpells on a deck with two minions, 1 spell, and 1 weapon should return a stack of 1 weapon.", 1, actualWeapons.size());
+        assertEquals("The spells should be the Arcanite Reaper.", expectedWeapons, actualWeapons);
     }
 
     @Test

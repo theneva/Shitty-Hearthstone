@@ -2,6 +2,8 @@ package fu.bar.card;
 
 import fu.bar.Configurator;
 
+import java.util.Collections;
+
 public class Deck extends CardContainer
 {
     public Deck()
@@ -16,5 +18,9 @@ public class Deck extends CardContainer
         }
 
         return cards.pop();
+    }
+
+    public void shuffle() {
+        Collections.shuffle(cards);
     }
 }

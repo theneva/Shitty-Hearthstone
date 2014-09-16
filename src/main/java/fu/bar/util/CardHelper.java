@@ -5,7 +5,7 @@ import fu.bar.card.MinionType;
 import fu.bar.card.Spell;
 import fu.bar.card.Weapon;
 
-public class CardProvider
+public class CardHelper
 {
     public static Spell getArcaneMissiles() {
         return new Spell("Arcane Missiles", "Deal 3 damage randomly split among enemy characters.", 1);

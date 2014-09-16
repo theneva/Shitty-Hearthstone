@@ -1,6 +1,6 @@
 package fu.bar.card;
 
-public class Card
+public abstract class Card
 {
     protected String name;
     protected String text;
@@ -25,7 +25,7 @@ public class Card
 
     public String getText()
     {
-        return text;
+        return text == null ? "" : text;
     }
 
     public void setText(final String text)

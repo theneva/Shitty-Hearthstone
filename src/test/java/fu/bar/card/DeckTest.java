@@ -2,7 +2,7 @@ package fu.bar.card;
 
 import org.junit.Test;
 
-import static fu.bar.util.CardProvider.*;
+import static fu.bar.util.CardHelper.*;
 import static org.junit.Assert.assertEquals;
 
 public class DeckTest
