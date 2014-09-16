@@ -1,7 +1,5 @@
 package fu.bar.card;
 
-import fu.bar.Configurator;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,7 +8,8 @@ public class Hand extends CardContainer
 {
     public Hand()
     {
-        super(Configurator.getInstance().getIntProperty("handLimit"));
+//        super(Configurator.getInstance().getIntProperty("handLimit"));
+        super(7); // FIXME
     }
 
     public List<Card> discardAll()

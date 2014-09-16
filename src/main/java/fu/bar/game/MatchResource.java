@@ -2,10 +2,18 @@ package fu.bar.game;
 
 import fu.bar.card.Minion;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+
+@Path("/match")
 public class MatchResource
 {
     final Match match = new Match();
 
+    @POST
+    @Path("start")
+    @Consumes("application/json")
     public Match start(final Player... players)
     {
         match.setUp(players);
