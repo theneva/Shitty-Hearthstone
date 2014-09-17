@@ -3,15 +3,15 @@ package fu.bar.card;
 public class Minion extends Card
 {
     private int attack;
-    private int health;
+    private int defaultHealth;
     private MinionType type;
 
-    public Minion(final String name, final String text, final int cost, final int attack, final int health, final MinionType type)
+    public Minion(final String name, final String text, final int cost, final int attack, final int defaultHealth, final MinionType type)
     {
         super(name, text, cost);
 
         this.attack = attack;
-        this.health = health;
+        this.defaultHealth = defaultHealth;
         this.type = type;
     }
 
@@ -25,14 +25,14 @@ public class Minion extends Card
         this.attack = attack;
     }
 
-    public int getHealth()
+    public int getDefaultHealth()
     {
-        return health;
+        return defaultHealth;
     }
 
-    public void setHealth(final int health)
+    public void setDefaultHealth(final int defaultHealth)
     {
-        this.health = health;
+        this.defaultHealth = defaultHealth;
     }
 
     public MinionType getType()
@@ -63,7 +63,7 @@ public class Minion extends Card
         {
             return false;
         }
-        if (health != minion.health)
+        if (defaultHealth != minion.defaultHealth)
         {
             return false;
         }
@@ -79,7 +79,7 @@ public class Minion extends Card
     public int hashCode()
     {
         int result = attack;
-        result = 31 * result + health;
+        result = 31 * result + defaultHealth;
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }

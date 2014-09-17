@@ -41,14 +41,14 @@ public class PlayerTest
     @Test
     public void testAddMinionToBoard()
     {
-        assertTrue("It should be possible to add a Ragnaros to index 0.", player.addMinionToBoard(getRagnaros(), 0));
-        assertTrue("It should be possible to add an auctioneer to the right of Ragnaros.", player.addMinionToBoard(getAuctioneer(), 1));
+        assertTrue("It should be possible to add a Ragnaros to index 0.", player.addMinionToBoard(new ActiveMinion(getRagnaros()), 0));
+        assertTrue("It should be possible to add an auctioneer to the right of Ragnaros.", player.addMinionToBoard(new ActiveMinion(getAuctioneer()), 1));
     }
 
     @Test
     public void testAddMinionToInvalidIndexReturnsFalse()
     {
         // Only 0 is a valid index on an empty board.
-        assertFalse("Adding a minion to an invalid index (1 on a board with 0 minions) should return false.", player.addMinionToBoard(getRagnaros(), 1));
+        assertFalse("Adding a minion to an invalid index (1 on a board with 0 minions) should return false.", player.addMinionToBoard(new ActiveMinion(getRagnaros()), 1));
     }
 }

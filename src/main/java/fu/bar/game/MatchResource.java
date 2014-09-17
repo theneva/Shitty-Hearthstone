@@ -1,7 +1,5 @@
 package fu.bar.game;
 
-import fu.bar.card.Minion;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -22,9 +20,9 @@ public class MatchResource
 
     public Match attack(final int attackingMinionIndex, final int defendingPlayerIndex, final int defendingMinionIndex)
     {
-        final Minion attackingMinion = match.getActivePlayer().getActiveMinions().get(attackingMinionIndex);
+        final ActiveMinion attackingMinion = match.getActivePlayer().getActiveMinions().get(attackingMinionIndex);
         final Player defendingPlayer = match.getBoard().getPlayer(defendingPlayerIndex);
-        final Minion defendingMinion = defendingPlayer.getActiveMinions().get(defendingMinionIndex);
+        final ActiveMinion defendingMinion = defendingPlayer.getActiveMinions().get(defendingMinionIndex);
 
         attackingMinion.attackOtherMinion(defendingMinion);
 

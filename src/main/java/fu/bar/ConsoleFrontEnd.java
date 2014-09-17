@@ -4,6 +4,7 @@ import fu.bar.card.Card;
 import fu.bar.card.Deck;
 import fu.bar.card.Hand;
 import fu.bar.card.Minion;
+import fu.bar.game.ActiveMinion;
 import fu.bar.game.Match;
 import fu.bar.game.MatchResource;
 import fu.bar.game.Player;
@@ -71,11 +72,11 @@ public class ConsoleFrontEnd
         System.out.println();
         System.out.print("Your board: ");
 
-        final List<Minion> activeMinions = activePlayer.getActiveMinions();
+        final List<ActiveMinion> activeMinions = activePlayer.getActiveMinions();
         for (int i = 0; i < activeMinions.size(); i++)
         {
             final Minion minion = activeMinions.get(i);
-            System.out.printf("%s (%d, %d)[%d] -- ", minion.getName(), minion.getAttack(), minion.getHealth(), i);
+            System.out.printf("%s (%d, %d)[%d] -- ", minion.getName(), minion.getAttack(), minion.getDefaultHealth(), i);
         }
 
         System.out.println();

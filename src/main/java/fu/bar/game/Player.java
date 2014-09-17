@@ -4,14 +4,13 @@ import fu.bar.Configurator;
 import fu.bar.card.Card;
 import fu.bar.card.Deck;
 import fu.bar.card.Hand;
-import fu.bar.card.Minion;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player
 {
-    private final List<Minion> activeMinions = new ArrayList<>();
+    private final List<ActiveMinion> activeMinions = new ArrayList<>();
 
     private String name;
     private Deck deck;
@@ -27,7 +26,7 @@ public class Player
         return card;
     }
 
-    public boolean addMinionToBoard(final Minion minion, final int position)
+    public boolean addMinionToBoard(final ActiveMinion activeMinion, final int position)
     {
         // Enough space?
         if (activeMinions.size() == activeMinionLimit)
@@ -41,7 +40,7 @@ public class Player
             return false;
         }
 
-        activeMinions.add(position, minion);
+        activeMinions.add(position, activeMinion);
         return true;
     }
 
@@ -55,7 +54,7 @@ public class Player
         this.name = name;
     }
 
-    public List<Minion> getActiveMinions()
+    public List<ActiveMinion> getActiveMinions()
     {
         return activeMinions;
     }
